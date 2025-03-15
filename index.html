@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        body {
+            min-block-size: 100vh;
+            padding: 40px;
+            background: url('b1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Overlay untuk background */
+        body::before {
+            content: '';
+            position: absolute;
+            inset-block-start: 0;
+            inset-inline-start: 0;
+            inline-size: 100%;
+            block-size: 100%;
+            background: rgba(64, 83, 131, 0.301);
+            z-index: 0;
+        }
+
+        .main-container {
+            max-inline-size: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            background: rgba(60, 74, 110, 0); /* Container dengan transparansi */
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-title {
+            color: #0991bbee;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-block-end: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .box {
+            background: rgba(70, 78, 97, 0.95); /* Box sedikit lebih terang dari container */
+            border-radius: 12px;
+            padding: 20px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .box h2 {
+            font-size: 1.5rem;
+            margin-block-end: 10px;
+            color: #e0e4ee;
+        }
+
+        .box p {
+            font-size: 1rem;
+            color: #a0a5b9;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset-block-start: 0;
+            inset-inline-start: 0;
+            inline-size: 100%;
+            block-size: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox-content {
+            background: #363c4b;
+            padding: 30px;
+            border-radius: 12px;
+            max-inline-size: 600px;
+            max-block-size: 80vh;
+            overflow-y: auto;
+            position: relative;
+            color: #ffffff;
+        }
+
+        .close-btn {
+            position: absolute;
+            inset-block-start: 15px;
+            inset-inline-end: 15px;
+            font-size: 24px;
+            color: #e0e4ee;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .lightbox-content img {
+            max-inline-size: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .lightbox-content h2 {
+            color: #e0e4ee;
+            margin-block-end: 15px;
+        }
+
+        .lightbox-content p {
+            color: #f8f1f1;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="dashboard-title">Apa Itu HTML dan CSS?</h1>
+        <div class="dashboard">
+            <!-- Box 1 -->
+            <div class="box" onclick="openLightbox('lightbox1')">
+                <h2>HTML</h2>
+                <p>Definisi dan Lainnya</p>
+            </div>
+
+            <!-- Box 2 -->
+            <div class="box" onclick="openLightbox('lightbox2')">
+                <h2>CSS</h2>
+                <p>Definisi dan Lainnya</p>
+            </div>
+
+            <!-- Box 3 -->
+            <div class="box" onclick="openLightbox('lightbox3')">
+                <h2>HASILNYA?</h2>
+                <p>Ya Begitulah</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox 1 -->
+    <div id="lightbox1" class="lightbox">
+        <div class="lightbox-content">
+            <button class="close-btn" onclick="closeLightbox('lightbox1')">×</button>
+            <h2>HTML</h2>
+            <p>HTML, atau Hypertext Markup Language, adalah fondasi untuk membuat struktur halaman web.
+                Ini seperti kerangka yang menentukan di mana teks, gambar, dan link berada. Tag HTML, seperti (h1) untuk judul besar dan (p) untuk paragraf, membantu browser memahami bagaimana menampilkan konten.</p>
+            <img src="b2.jpg" alt="HTML">
+            <br>
+            <br>
+            <p>Sehingga menghasilkan hasil berikut:</p>
+            <img src="b3.jpg" alt="HTML">
+        </div>
+    </div>
+
+    <!-- Lightbox 2 -->
+    <div id="lightbox2" class="lightbox">
+        <div class="lightbox-content">
+            <button class="close-btn" onclick="closeLightbox('lightbox2')">×</button>
+            <h2>CSS</h2>
+            <p>CSS, atau Cascading Style Sheets, digunakan untuk mendesain tampilan HTML.
+                Ini memungkinkan Anda mengubah warna teks, ukuran font, dan tata letak. CSS bisa diterapkan langsung di HTML (inline), di bagian (head) (internal), atau di file terpisah (eksternal).</p>
+            <img src="b4.jpg" alt="CSS">
+            <br>
+            <p>HTML dan CSS bekerja bersama untuk menciptakan pengalaman pengguna yang baik. HTML menyusun konten, sementara CSS membuatnya terlihat menarik.
+                Ini adalah langkah awal yang penting untuk siapa saja yang ingin belajar pengembangan web.</p>
+        </div>
+    </div>
+
+    <!-- Lightbox 3 -->
+    <div id="lightbox3" class="lightbox">
+        <div class="lightbox-content">
+            <button class="close-btn" onclick="closeLightbox('lightbox3')">×</button>
+            <h2>HASILNYA?</h2>
+            <p>Pencet: <a href="https://luqman1212.github.io/WebPratikum1/?authuser=0">link ini</a>
+            <img src="b5.jpg" alt="Hasilnya?">
+        </div>
+    </div>
+
+    <script>
+        function openLightbox(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeLightbox(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
+</body>
+</html>
