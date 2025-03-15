@@ -1,1 +1,5 @@
-# WebPratikum2
+![alt text](https://github.com/luqman1212/WebPratikum2/blob/main/b1.jpg?raw=true)
+![alt text](https://github.com/luqman1212/WebPratikum2/blob/main/b2.jpg?raw=true)
+![alt text](https://github.com/luqman1212/WebPratikum2/blob/main/b3.jpg?raw=true)
+![alt text](https://github.com/luqman1212/WebPratikum2/blob/main/b4.jpg?raw=true)
+![alt text](https://github.com/luqman1212/WebPratikum2/blob/main/b5.jpg?raw=true)
