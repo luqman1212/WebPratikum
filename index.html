@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-block-size: 100vh;
+            padding: 40px;
+            background: url('b1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Overlay untuk background */
+        body::before {
+            content: '';
+            position: absolute;
+            inset-block-start: 0;
+            inset-inline-start: 0;
+            inline-size: 100%;
+            block-size: 100%;
+            background: rgba(42, 46, 57, 0.85);
+            z-index: 0;
+        }
+
+        .main-container {
+            max-inline-size: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            background: rgba(54, 60, 75, 0.9); /* Container dengan transparansi */
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-title {
+            color: #e0e4ee;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-block-end: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .box {
+            background: rgba(70, 78, 97, 0.95); /* Box sedikit lebih terang dari container */
+            border-radius: 12px;
+            padding: 20px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .box h2 {
+            font-size: 1.5rem;
+            margin-block-end: 10px;
+            color: #e0e4ee;
+        }
+
+        .box p {
+            font-size: 1rem;
+            color: #a0a5b9;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset-block-start: 0;
+            inset-inline-start: 0;
+            inline-size: 100%;
+            block-size: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox-content {
+            background: #363c4b;
+            padding: 30px;
+            border-radius: 12px;
+            max-inline-size: 600px;
+            max-block-size: 80vh;
+            overflow-y: auto;
+            position: relative;
+            color: #ffffff;
+        }
+
+        .close-btn {
+            position: absolute;
+            inset-block-start: 15px;
+            inset-inline-end: 15px;
+            font-size: 24px;
+            color: #e0e4ee;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .lightbox-content img {
+            max-inline-size: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .lightbox-content h2 {
+            color: #e0e4ee;
+            margin-block-end: 15px;
+        }
+
+        .lightbox-content p {
+            color: #a0a5b9;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="dashboard-title">Dashboard Utama</h1>
+        <div class="dashboard">
+            <!-- Box 1 -->
+            <div class="box" onclick="openLightbox('lightbox1')">
+                <h2>Analitik</h2>
+                <p>Data performa singkat</p>
+            </div>
+
+            <!-- Box 2 -->
+            <div class="box" onclick="openLightbox('lightbox2')">
+                <h2>Statistik</h2>
+                <p>Angka real-time</p>
+            </div>
+
+            <!-- Box 3 -->
+            <div class="box" onclick="openLightbox('lightbox3')">
+                <h2>Laporan</h2>
+                <p>Ringkasan bulanan</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox 1 -->
+    <div id="lightbox1" class="lightbox">
+        <div class="lightbox-content">
+            <button class="close-btn" onclick="closeLightbox('lightbox1')">×</button>
+            <h2>Analitik Performa</h2>
+            <p>Berikut adalah analisis mendalam tentang performa sistem Anda. Data ini mencakup metrik penting seperti waktu respons, tingkat keberhasilan, dan penggunaan sumber daya.</p>
+            <img src="https://via.placeholder.com/500x300" alt="Analitik Grafik">
+        </div>
+    </div>
+
+    <!-- Lightbox 2 -->
+    <div id="lightbox2" class="lightbox">
+        <div class="lightbox-content">
+            <button class="close-btn" onclick="closeLightbox('lightbox2')">×</button>
+            <h2>Statistik Real-time</h2>
+            <p>Data statistik yang diperbarui setiap detik, menampilkan jumlah pengguna aktif, transaksi, dan aktivitas sistem lainnya.</p>
+            <img src="https://via.placeholder.com/500x300" alt="Statistik Grafik">
+        </div>
+    </div>
+
+    <!-- Lightbox 3 -->
+    <div id="lightbox3" class="lightbox">
+        <div class="lightbox-content">
+            <button class="close-btn" onclick="closeLightbox('lightbox3')">×</button>
+            <h2>Laporan Bulanan</h2>
+            <p>Ringkasan lengkap performa bulanan, termasuk tren, pencapaian, dan rekomendasi untuk perbaikan.</p>
+            <img src="https://via.placeholder.com/500x300" alt="Laporan Grafik">
+        </div>
+    </div>
+
+    <script>
+        function openLightbox(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeLightbox(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
+</body>
+</html>
